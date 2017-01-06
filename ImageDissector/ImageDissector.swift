@@ -70,7 +70,7 @@ extension ImageDissector {
 }
 
 extension ImageDissector {
-    open func dissectImage(with target: SizeInjectionable, completion: @escaping (SizeInjectionable) -> Void) {
+    open func dissectImage<T: SizeInjectionable>(with target: T, completion: @escaping (T) -> Void) {
         guard let imageUrl = target.imageUrl else {
             completion(target)
             return
@@ -85,7 +85,7 @@ extension ImageDissector {
         }
     }
     
-    open func dissectImage(with targets: [SizeInjectionable], completion: @escaping ([SizeInjectionable]) -> Void) {
+    open func dissectImage<T: SizeInjectionable>(with targets: [T], completion: @escaping ([T]) -> Void) {
         let urls = targets.flatMap{ $0.imageUrl }
         dissectImage(with: urls) { (results) in
             for (url, result) in results {
