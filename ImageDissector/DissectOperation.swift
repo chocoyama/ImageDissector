@@ -12,7 +12,7 @@ class DissectOperation: Operation {
     
     var result: ImageDissector.Result?
     
-    private var mutableData = Data()
+    private var stackData = Data()
     private let dataTask: URLSessionDataTask
     
     init(task: URLSessionDataTask) {
@@ -24,33 +24,32 @@ class DissectOperation: Operation {
         dataTask.resume()
     }
     
-    func appendData(data: Data) {
-        if isCancelled == false {
-            mutableData.append(data)
-        }
+    func append(data: Data) {
+        guard isCancelled == false else { return }
+        stackData.append(data)
         
         guard data.count >= 2 else { return }
-        
-        if isCancelled == false {
-            parse()
-        }
+        parse()
     }
     
     func terminateWith(error: Error) {
         complete(result: .failure(error))
     }
     
+    func reset() {
+        stackData = Data()
+    }
+    
     private func parse() {
-        let data = mutableData
+        let data = stackData
         let type = Type.detect(from: data)
         
         if type != .unsupported {
             let size = type.extractSize(from: data)
-            if size != CGSize.zero {
-                complete(result: .success(size, type))
-            }
+            complete(result: .success(size, type))
         } else if data.count > 2 {
-            complete(result: .failure(NSError.init(domain: "", code: 0, userInfo: nil)))
+            let error = NSError.init(domain: "", code: 0, userInfo: nil)
+            complete(result: .failure(error))
         }
     }
     

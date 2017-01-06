@@ -59,7 +59,6 @@ class SizeInjectionTests: XCTestCase {
         
         waitForExpectations(timeout: 2.0, handler: nil)
     }
-    
 }
 
 

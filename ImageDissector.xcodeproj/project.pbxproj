@@ -22,6 +22,7 @@
 		80A5E76A1E1F7A590087AC3B /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E7691E1F7A590087AC3B /* PerformanceTests.swift */; };
 		80A5E7751E1F8E7D0087AC3B /* SizeInjectionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E7741E1F8E7D0087AC3B /* SizeInjectionable.swift */; };
 		80A5E7771E1F91E40087AC3B /* SizeInjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E7761E1F91E40087AC3B /* SizeInjectionTests.swift */; };
+		80A5E77E1E1FE77D0087AC3B /* ImageDissectOperationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E77D1E1FE77D0087AC3B /* ImageDissectOperationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		80A5E7691E1F7A590087AC3B /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		80A5E7741E1F8E7D0087AC3B /* SizeInjectionable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeInjectionable.swift; sourceTree = "<group>"; };
 		80A5E7761E1F91E40087AC3B /* SizeInjectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeInjectionTests.swift; sourceTree = "<group>"; };
+		80A5E77D1E1FE77D0087AC3B /* ImageDissectOperationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDissectOperationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,15 +97,12 @@
 		80A5E7301E1F29D60087AC3B /* ImageDissector */ = {
 			isa = PBXGroup;
 			children = (
+				80A5E77A1E1F9AFB0087AC3B /* Dissector */,
 				80A5E75C1E1F725A0087AC3B /* Helper */,
 				80A5E74F1E1F2B770087AC3B /* Entity */,
 				80A5E7481E1F29F60087AC3B /* Value */,
 				80A5E7311E1F29D60087AC3B /* ImageDissector.h */,
 				80A5E7321E1F29D60087AC3B /* Info.plist */,
-				80A5E74B1E1F2A9A0087AC3B /* ImageDissector.swift */,
-				80A5E75A1E1F663D0087AC3B /* DissectOperation.swift */,
-				80A5E7671E1F77AC0087AC3B /* ImageDissectSessionDelegate.swift */,
-				80A5E7741E1F8E7D0087AC3B /* SizeInjectionable.swift */,
 			);
 			path = ImageDissector;
 			sourceTree = "<group>";
@@ -144,6 +143,18 @@
 				80A5E74D1E1F2B480087AC3B /* JPEGParser.swift */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		80A5E77A1E1F9AFB0087AC3B /* Dissector */ = {
+			isa = PBXGroup;
+			children = (
+				80A5E74B1E1F2A9A0087AC3B /* ImageDissector.swift */,
+				80A5E75A1E1F663D0087AC3B /* DissectOperation.swift */,
+				80A5E77D1E1FE77D0087AC3B /* ImageDissectOperationManager.swift */,
+				80A5E7671E1F77AC0087AC3B /* ImageDissectSessionDelegate.swift */,
+				80A5E7741E1F8E7D0087AC3B /* SizeInjectionable.swift */,
+			);
+			name = Dissector;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +275,7 @@
 				80A5E7751E1F8E7D0087AC3B /* SizeInjectionable.swift in Sources */,
 				80A5E74A1E1F2A000087AC3B /* Type.swift in Sources */,
 				80A5E74E1E1F2B480087AC3B /* JPEGParser.swift in Sources */,
+				80A5E77E1E1FE77D0087AC3B /* ImageDissectOperationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

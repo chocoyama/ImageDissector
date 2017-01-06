@@ -23,35 +23,47 @@ class PerformanceTests: XCTestCase {
         super.tearDown()
     }
     
-    func testInitDataPerformance() {
-        self.measure {
-            let start = Date()
-            
-            let data = TestData.gif.data
-            let image = UIImage(data: data)
-            let _ = image?.size
-            
-            let span = start.timeIntervalSince(Date())
-            print("経過時間(Data) = \(span)")
-        }
-    }
+//    func testInitDataPerformance() {
+//        self.measure {
+//            let start = Date()
+//            
+//            let data = TestData.gif.data
+//            let image = UIImage(data: data)
+//            let _ = image?.size
+//            
+//            let span = start.timeIntervalSince(Date())
+//            print("経過時間(Data) = \(span)")
+//        }
+//    }
+//    
+//    func testInitDataBigDataPerformance() {
+//        self.measure {
+//            let start = Date()
+//            
+//            let images = TestData.manyUrls.map{ try! Data.init(contentsOf: $0) }.map{ UIImage(data: $0) }
+//            let _ = images.map{ $0?.size }
+//            
+//            let span = start.timeIntervalSince(Date())
+//            print("経過時間(Data BIGDATA) = \(span)")
+//        }
+//    }
     
     func testDissectorPerformance() {
         let url = TestData.gif.url
-        
         let start = Date()
         
         let expectation = self.expectation(description: "dissect")
         dissector?.dissectImage(with: url, completion: { (result) in
-            defer { expectation.fulfill() }
+            defer {
+                let span = start.timeIntervalSince(Date())
+                print("経過時間(DISSECT) = \(span)")
+                expectation.fulfill()
+            }
             
             switch result {
             case .success(let size, let type):
                 XCTAssertEqual(size, TestData.gif.size)
                 XCTAssertEqual(type, Type.gif)
-                
-                let span = start.timeIntervalSince(Date())
-                print("経過時間(DESECT) = \(span)")
             case .failure(let error):
                 XCTFail(error.localizedDescription)
             }
@@ -59,5 +71,22 @@ class PerformanceTests: XCTestCase {
         })
         waitForExpectations(timeout: 2.0, handler: nil)
     }
-    
+
+    func testDissectorBigDataPerformance() {
+        let urls = TestData.manyUrls
+        let start = Date()
+        
+        let expectation = self.expectation(description: "concurrent")
+        dissector?.dissectImage(with: urls, completion: { (results) in
+            defer {
+                let span = start.timeIntervalSince(Date())
+                print("経過時間(DISSECT BIGDATA) = \(span)")
+                expectation.fulfill()
+            }
+            results.forEach {
+                XCTAssertNotNil($0.value.getSize(), "\($0.key) のサイズを取得できませんでした")
+            }
+        })
+        waitForExpectations(timeout: 5.0, handler: nil)
+    }
 }

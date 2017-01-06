@@ -29,30 +29,33 @@ open class ImageDissector {
         }
     }
     
-    private let session: URLSession
-    private let delegate = ImageDissectSessionDelegate()
+    fileprivate let session: URLSession
+    fileprivate let delegate = ImageDissectSessionDelegate()
     
     public init() {
         session = URLSession.init(configuration: .default, delegate: self.delegate, delegateQueue: nil)
     }
-    
+}
+
+extension ImageDissector {
     open func dissectImage(with url: URL, completion: @escaping (Result) -> Void) {
         let task = session.dataTask(with: url)
         let operation = DissectOperation(task: task)
         operation.completionBlock = { [weak self] in
             let result = operation.result ?? .failure(NSError.init(domain: "", code: 0, userInfo: nil))
             completion(result)
-            self?.delegate.removeOperation(at: url)
+            self?.delegate.manager.removeOperation(at: url)
         }
-        delegate.addOperation(operation, with: url)
+        delegate.manager.addOperation(operation, with: url)
     }
     
     open func dissectImage(with urls: [URL], completion: @escaping ([URL: Result]) -> Void) {
         let group = DispatchGroup()
-        
         var results = [URL: Result]()
         
-        for url in urls {
+        let uniqueUrls = NSOrderedSet.init(array: urls).array as! [URL]
+        
+        for url in uniqueUrls {
             group.enter()
             DispatchQueue.main.async { [weak self] in
                 self?.dissectImage(with: url, completion: { (result) in
@@ -62,11 +65,11 @@ open class ImageDissector {
             }
         }
         
-        group.notify(queue: .main) {
-            completion(results)
-        }
+        group.notify(queue: .main) { completion(results) }
     }
-    
+}
+
+extension ImageDissector {
     open func dissectImage(with target: SizeInjectionable, completion: @escaping (SizeInjectionable) -> Void) {
         guard let imageUrl = target.imageUrl else {
             completion(target)
@@ -88,7 +91,10 @@ open class ImageDissector {
             for (url, result) in results {
                 switch result {
                 case .success(let size, _):
-                    targets.filter{ $0.imageUrl == url }.forEach{ $0.imageSize = size }
+                    targets
+                        .filter{ $0.imageUrl == url }
+                        .forEach{ $0.imageSize = size }
+                    
                 case .failure(_):
                     break
                 }
