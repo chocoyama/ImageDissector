@@ -10,6 +10,16 @@
 		80A5E7381E1F29D60087AC3B /* ImageDissector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A5E72E1E1F29D60087AC3B /* ImageDissector.framework */; };
 		80A5E73D1E1F29D60087AC3B /* ImageDissectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E73C1E1F29D60087AC3B /* ImageDissectorTests.swift */; };
 		80A5E73F1E1F29D60087AC3B /* ImageDissector.h in Headers */ = {isa = PBXBuildFile; fileRef = 80A5E7311E1F29D60087AC3B /* ImageDissector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		80A5E74A1E1F2A000087AC3B /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E7491E1F2A000087AC3B /* Type.swift */; };
+		80A5E74C1E1F2A9A0087AC3B /* ImageDissector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E74B1E1F2A9A0087AC3B /* ImageDissector.swift */; };
+		80A5E74E1E1F2B480087AC3B /* JPEGParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E74D1E1F2B480087AC3B /* JPEGParser.swift */; };
+		80A5E75B1E1F663D0087AC3B /* DissectOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E75A1E1F663D0087AC3B /* DissectOperation.swift */; };
+		80A5E7601E1F73570087AC3B /* ExtractSizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E75F1E1F73570087AC3B /* ExtractSizeTests.swift */; };
+		80A5E7621E1F752A0087AC3B /* DetectImageTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E7611E1F752A0087AC3B /* DetectImageTypeTests.swift */; };
+		80A5E7641E1F76610087AC3B /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E7631E1F76610087AC3B /* TestData.swift */; };
+		80A5E7661E1F77180087AC3B /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E7651E1F77180087AC3B /* Size.swift */; };
+		80A5E7681E1F77AC0087AC3B /* ImageDissectSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E7671E1F77AC0087AC3B /* ImageDissectSessionDelegate.swift */; };
+		80A5E76A1E1F7A590087AC3B /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E7691E1F7A590087AC3B /* PerformanceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +39,16 @@
 		80A5E7371E1F29D60087AC3B /* ImageDissectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageDissectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80A5E73C1E1F29D60087AC3B /* ImageDissectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDissectorTests.swift; sourceTree = "<group>"; };
 		80A5E73E1E1F29D60087AC3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80A5E7491E1F2A000087AC3B /* Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
+		80A5E74B1E1F2A9A0087AC3B /* ImageDissector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDissector.swift; sourceTree = "<group>"; };
+		80A5E74D1E1F2B480087AC3B /* JPEGParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEGParser.swift; sourceTree = "<group>"; };
+		80A5E75A1E1F663D0087AC3B /* DissectOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DissectOperation.swift; sourceTree = "<group>"; };
+		80A5E75F1E1F73570087AC3B /* ExtractSizeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtractSizeTests.swift; sourceTree = "<group>"; };
+		80A5E7611E1F752A0087AC3B /* DetectImageTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectImageTypeTests.swift; sourceTree = "<group>"; };
+		80A5E7631E1F76610087AC3B /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		80A5E7651E1F77180087AC3B /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		80A5E7671E1F77AC0087AC3B /* ImageDissectSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDissectSessionDelegate.swift; sourceTree = "<group>"; };
+		80A5E7691E1F7A590087AC3B /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +91,14 @@
 		80A5E7301E1F29D60087AC3B /* ImageDissector */ = {
 			isa = PBXGroup;
 			children = (
+				80A5E75C1E1F725A0087AC3B /* Helper */,
+				80A5E74F1E1F2B770087AC3B /* Entity */,
+				80A5E7481E1F29F60087AC3B /* Value */,
 				80A5E7311E1F29D60087AC3B /* ImageDissector.h */,
 				80A5E7321E1F29D60087AC3B /* Info.plist */,
+				80A5E74B1E1F2A9A0087AC3B /* ImageDissector.swift */,
+				80A5E75A1E1F663D0087AC3B /* DissectOperation.swift */,
+				80A5E7671E1F77AC0087AC3B /* ImageDissectSessionDelegate.swift */,
 			);
 			path = ImageDissector;
 			sourceTree = "<group>";
@@ -81,9 +107,37 @@
 			isa = PBXGroup;
 			children = (
 				80A5E73C1E1F29D60087AC3B /* ImageDissectorTests.swift */,
+				80A5E75F1E1F73570087AC3B /* ExtractSizeTests.swift */,
+				80A5E7611E1F752A0087AC3B /* DetectImageTypeTests.swift */,
+				80A5E7691E1F7A590087AC3B /* PerformanceTests.swift */,
+				80A5E7631E1F76610087AC3B /* TestData.swift */,
 				80A5E73E1E1F29D60087AC3B /* Info.plist */,
 			);
 			path = ImageDissectorTests;
+			sourceTree = "<group>";
+		};
+		80A5E7481E1F29F60087AC3B /* Value */ = {
+			isa = PBXGroup;
+			children = (
+				80A5E7491E1F2A000087AC3B /* Type.swift */,
+			);
+			name = Value;
+			sourceTree = "<group>";
+		};
+		80A5E74F1E1F2B770087AC3B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				80A5E7651E1F77180087AC3B /* Size.swift */,
+			);
+			name = Entity;
+			sourceTree = "<group>";
+		};
+		80A5E75C1E1F725A0087AC3B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				80A5E74D1E1F2B480087AC3B /* JPEGParser.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +202,7 @@
 				TargetAttributes = {
 					80A5E72D1E1F29D60087AC3B = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 					80A5E7361E1F29D60087AC3B = {
@@ -196,6 +251,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80A5E7661E1F77180087AC3B /* Size.swift in Sources */,
+				80A5E7681E1F77AC0087AC3B /* ImageDissectSessionDelegate.swift in Sources */,
+				80A5E75B1E1F663D0087AC3B /* DissectOperation.swift in Sources */,
+				80A5E74C1E1F2A9A0087AC3B /* ImageDissector.swift in Sources */,
+				80A5E74A1E1F2A000087AC3B /* Type.swift in Sources */,
+				80A5E74E1E1F2B480087AC3B /* JPEGParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +264,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80A5E7601E1F73570087AC3B /* ExtractSizeTests.swift in Sources */,
+				80A5E7621E1F752A0087AC3B /* DetectImageTypeTests.swift in Sources */,
 				80A5E73D1E1F29D60087AC3B /* ImageDissectorTests.swift in Sources */,
+				80A5E76A1E1F7A590087AC3B /* PerformanceTests.swift in Sources */,
+				80A5E7641E1F76610087AC3B /* TestData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +385,7 @@
 		80A5E7431E1F29D60087AC3B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -331,6 +397,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.chocoyama.ImageDissector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -338,6 +405,7 @@
 		80A5E7441E1F29D60087AC3B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -356,6 +424,7 @@
 		80A5E7461E1F29D60087AC3B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = ImageDissectorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.chocoyama.ImageDissectorTests;
@@ -367,6 +436,7 @@
 		80A5E7471E1F29D60087AC3B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = ImageDissectorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.chocoyama.ImageDissectorTests;

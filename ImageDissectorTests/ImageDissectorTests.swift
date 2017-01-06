@@ -11,26 +11,111 @@ import XCTest
 
 class ImageDissectorTests: XCTestCase {
     
+    var dissector: ImageDissector?
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        dissector = ImageDissector()
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testDissectGIFImage() {
+        let url = TestData.gif.url
+        
+        let expectation = self.expectation(description: "dissect")
+        dissector?.dissectImage(with: url, completion: { (result) in
+            defer { expectation.fulfill() }
+            
+            switch result {
+            case .success(let size, let type):
+                XCTAssertEqual(size, TestData.gif.size)
+                XCTAssertEqual(type, Type.gif)
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        })
+        waitForExpectations(timeout: 2.0, handler: nil)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testDissectPNGImage() {
+        let url = TestData.png.url
+        
+        let expectation = self.expectation(description: "dissect")
+        dissector?.dissectImage(with: url, completion: { (result) in
+            defer { expectation.fulfill() }
+            
+            switch result {
+            case .success(let size, let type):
+                XCTAssertEqual(size, TestData.png.size)
+                XCTAssertEqual(type, Type.png)
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        })
+        waitForExpectations(timeout: 2.0, handler: nil)
+    }
+    
+    func testDissectJPEGImage() {
+        let url = TestData.jpeg.url
+        
+        let expectation = self.expectation(description: "dissect")
+        dissector?.dissectImage(with: url, completion: { (result) in
+            defer { expectation.fulfill() }
+            
+            switch result {
+            case .success(let size, let type):
+                XCTAssertEqual(size, TestData.jpeg.size)
+                XCTAssertEqual(type, Type.jpeg)
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        })
+        waitForExpectations(timeout: 2.0, handler: nil)
+    }
+    
+    func testConcurrentDissection() {
+        let urls = [
+            TestData.gif.url,
+            TestData.png.url,
+            TestData.jpeg.url
+        ]
+        
+        let expectation = self.expectation(description: "concurrent")
+        dissector?.dissectImages(with: urls, completion: { (results) in
+            defer { expectation.fulfill() }
+            
+            let gifResult = results[TestData.gif.url]!
+            let pngResult = results[TestData.png.url]!
+            let jpegResult = results[TestData.jpeg.url]!
+            
+            switch gifResult {
+            case .success(let size, let type):
+                XCTAssertEqual(size, TestData.gif.size)
+                XCTAssertEqual(type, Type.gif)
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+            
+            switch pngResult {
+            case .success(let size, let type):
+                XCTAssertEqual(size, TestData.png.size)
+                XCTAssertEqual(type, Type.png)
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+            
+            switch jpegResult {
+            case .success(let size, let type):
+                XCTAssertEqual(size, TestData.jpeg.size)
+                XCTAssertEqual(type, Type.jpeg)
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        })
+        waitForExpectations(timeout: 2.0, handler: nil)
     }
     
 }

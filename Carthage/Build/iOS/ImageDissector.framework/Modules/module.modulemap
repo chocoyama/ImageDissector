@@ -1,0 +1,10 @@
+framework module ImageDissector {
+  umbrella header "ImageDissector.h"
+
+  export *
+  module * { export * }
+}
+
+module ImageDissector.Swift {
+    header "ImageDissector-Swift.h"
+}
