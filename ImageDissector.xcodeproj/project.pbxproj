@@ -20,6 +20,8 @@
 		80A5E7661E1F77180087AC3B /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E7651E1F77180087AC3B /* Size.swift */; };
 		80A5E7681E1F77AC0087AC3B /* ImageDissectSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E7671E1F77AC0087AC3B /* ImageDissectSessionDelegate.swift */; };
 		80A5E76A1E1F7A590087AC3B /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E7691E1F7A590087AC3B /* PerformanceTests.swift */; };
+		80A5E7751E1F8E7D0087AC3B /* SizeInjectionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E7741E1F8E7D0087AC3B /* SizeInjectionable.swift */; };
+		80A5E7771E1F91E40087AC3B /* SizeInjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E7761E1F91E40087AC3B /* SizeInjectionTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		80A5E7651E1F77180087AC3B /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		80A5E7671E1F77AC0087AC3B /* ImageDissectSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDissectSessionDelegate.swift; sourceTree = "<group>"; };
 		80A5E7691E1F7A590087AC3B /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
+		80A5E7741E1F8E7D0087AC3B /* SizeInjectionable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeInjectionable.swift; sourceTree = "<group>"; };
+		80A5E7761E1F91E40087AC3B /* SizeInjectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeInjectionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 				80A5E74B1E1F2A9A0087AC3B /* ImageDissector.swift */,
 				80A5E75A1E1F663D0087AC3B /* DissectOperation.swift */,
 				80A5E7671E1F77AC0087AC3B /* ImageDissectSessionDelegate.swift */,
+				80A5E7741E1F8E7D0087AC3B /* SizeInjectionable.swift */,
 			);
 			path = ImageDissector;
 			sourceTree = "<group>";
@@ -110,6 +115,7 @@
 				80A5E75F1E1F73570087AC3B /* ExtractSizeTests.swift */,
 				80A5E7611E1F752A0087AC3B /* DetectImageTypeTests.swift */,
 				80A5E7691E1F7A590087AC3B /* PerformanceTests.swift */,
+				80A5E7761E1F91E40087AC3B /* SizeInjectionTests.swift */,
 				80A5E7631E1F76610087AC3B /* TestData.swift */,
 				80A5E73E1E1F29D60087AC3B /* Info.plist */,
 			);
@@ -255,6 +261,7 @@
 				80A5E7681E1F77AC0087AC3B /* ImageDissectSessionDelegate.swift in Sources */,
 				80A5E75B1E1F663D0087AC3B /* DissectOperation.swift in Sources */,
 				80A5E74C1E1F2A9A0087AC3B /* ImageDissector.swift in Sources */,
+				80A5E7751E1F8E7D0087AC3B /* SizeInjectionable.swift in Sources */,
 				80A5E74A1E1F2A000087AC3B /* Type.swift in Sources */,
 				80A5E74E1E1F2B480087AC3B /* JPEGParser.swift in Sources */,
 			);
@@ -264,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80A5E7771E1F91E40087AC3B /* SizeInjectionTests.swift in Sources */,
 				80A5E7601E1F73570087AC3B /* ExtractSizeTests.swift in Sources */,
 				80A5E7621E1F752A0087AC3B /* DetectImageTypeTests.swift in Sources */,
 				80A5E73D1E1F29D60087AC3B /* ImageDissectorTests.swift in Sources */,

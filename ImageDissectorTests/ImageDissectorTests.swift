@@ -84,7 +84,7 @@ class ImageDissectorTests: XCTestCase {
         ]
         
         let expectation = self.expectation(description: "concurrent")
-        dissector?.dissectImages(with: urls, completion: { (results) in
+        dissector?.dissectImage(with: urls, completion: { (results) in
             defer { expectation.fulfill() }
             
             let gifResult = results[TestData.gif.url]!
