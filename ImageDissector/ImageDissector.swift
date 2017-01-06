@@ -32,7 +32,7 @@ open class ImageDissector {
     private let session: URLSession
     private let delegate = ImageDissectSessionDelegate()
     
-    init() {
+    public init() {
         session = URLSession.init(configuration: .default, delegate: self.delegate, delegateQueue: nil)
     }
     
