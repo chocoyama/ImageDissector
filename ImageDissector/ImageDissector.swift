@@ -50,15 +50,18 @@ extension ImageDissector {
     }
     
     open func dissectImage(with urls: [URL], completion: @escaping ([URL: Result]) -> Void) {
+        
         let group = DispatchGroup()
         var results = [URL: Result]()
         
         let uniqueUrls = NSOrderedSet.init(array: urls).array as! [URL]
         
+        (0..<uniqueUrls.count).forEach{ _ in group.enter() }
+        
         for url in uniqueUrls {
-            group.enter()
             DispatchQueue.main.async { [weak self] in
                 self?.dissectImage(with: url, completion: { (result) in
+                    guard let _  = self else { return }
                     results[url] = result
                     group.leave()
                 })
