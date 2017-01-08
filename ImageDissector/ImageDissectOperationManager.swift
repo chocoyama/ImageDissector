@@ -13,6 +13,10 @@ internal class ImageDissectOperationManager {
     private let queue = OperationQueue()
     private var operations = [String: DissectOperation]()
     
+    deinit {
+        queue.cancelAllOperations()
+    }
+    
     func addOperation(_ operation: DissectOperation, with url: URL) {
         operations[url.absoluteString] = operation
         queue.addOperation(operation)

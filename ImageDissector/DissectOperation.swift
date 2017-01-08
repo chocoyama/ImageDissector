@@ -10,7 +10,7 @@ import Foundation
 
 class DissectOperation: Operation {
     
-    var result: ImageDissector.Result?
+    var result: Result?
     
     private var stackData = Data()
     private let dataTask: URLSessionDataTask
@@ -48,12 +48,11 @@ class DissectOperation: Operation {
             let size = type.extractSize(from: data)
             complete(result: .success(size, type))
         } else if data.count > 2 {
-            let error = NSError.init(domain: "", code: 0, userInfo: nil)
-            complete(result: .failure(error))
+            complete(result: .failure(ImageDissectorError.brokenData))
         }
     }
     
-    private func complete(result: ImageDissector.Result) {
+    private func complete(result: Result) {
         self.result = result
         completionBlock?()
         super.cancel()

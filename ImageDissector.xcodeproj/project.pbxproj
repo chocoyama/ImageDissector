@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		807D14141E22537C00EEE7F2 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D14131E22537C00EEE7F2 /* Error.swift */; };
+		807D14161E2253BA00EEE7F2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D14151E2253BA00EEE7F2 /* Result.swift */; };
 		80A5E7381E1F29D60087AC3B /* ImageDissector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A5E72E1E1F29D60087AC3B /* ImageDissector.framework */; };
 		80A5E73D1E1F29D60087AC3B /* ImageDissectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5E73C1E1F29D60087AC3B /* ImageDissectorTests.swift */; };
 		80A5E73F1E1F29D60087AC3B /* ImageDissector.h in Headers */ = {isa = PBXBuildFile; fileRef = 80A5E7311E1F29D60087AC3B /* ImageDissector.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		807D14131E22537C00EEE7F2 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		807D14151E2253BA00EEE7F2 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		80A5E72E1E1F29D60087AC3B /* ImageDissector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageDissector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80A5E7311E1F29D60087AC3B /* ImageDissector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageDissector.h; sourceTree = "<group>"; };
 		80A5E7321E1F29D60087AC3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				80A5E7491E1F2A000087AC3B /* Type.swift */,
+				807D14131E22537C00EEE7F2 /* Error.swift */,
 			);
 			name = Value;
 			sourceTree = "<group>";
@@ -133,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				80A5E7651E1F77180087AC3B /* Size.swift */,
+				807D14151E2253BA00EEE7F2 /* Result.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -274,7 +280,9 @@
 				80A5E74C1E1F2A9A0087AC3B /* ImageDissector.swift in Sources */,
 				80A5E7751E1F8E7D0087AC3B /* SizeInjectionable.swift in Sources */,
 				80A5E74A1E1F2A000087AC3B /* Type.swift in Sources */,
+				807D14161E2253BA00EEE7F2 /* Result.swift in Sources */,
 				80A5E74E1E1F2B480087AC3B /* JPEGParser.swift in Sources */,
+				807D14141E22537C00EEE7F2 /* Error.swift in Sources */,
 				80A5E77E1E1FE77D0087AC3B /* ImageDissectOperationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +494,7 @@
 				80A5E7441E1F29D60087AC3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		80A5E7451E1F29D60087AC3B /* Build configuration list for PBXNativeTarget "ImageDissectorTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +503,7 @@
 				80A5E7471E1F29D60087AC3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

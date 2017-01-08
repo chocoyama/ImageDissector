@@ -19,7 +19,7 @@ internal class ImageDissectSessionDelegate: NSObject, URLSessionDataDelegate {
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         let operation = manager.getOperation(by: task)
-        operation?.terminateWith(error: error ?? NSError.init(domain: "", code: 0, userInfo: nil))
+        operation?.terminateWith(error: error ?? ImageDissectorError.didCompleteWithError)
     }
     
     func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {

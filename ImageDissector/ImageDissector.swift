@@ -10,39 +10,30 @@ import Foundation
 
 open class ImageDissector {
     
-    public enum Result {
-        case success(CGSize, Type)
-        case failure(Error)
-        
-        func getSize() -> CGSize? {
-            switch self {
-            case .success(let size, _): return size
-            case .failure(_): return nil
-            }
-        }
-        
-        func getType() -> Type? {
-            switch self {
-            case .success(_, let type): return type
-            case .failure(_): return nil
-            }
-        }
-    }
-    
     fileprivate let session: URLSession
     fileprivate let delegate = ImageDissectSessionDelegate()
     
+    private let timeoutSec = 1.0
+    
     public init() {
-        session = URLSession.init(configuration: .default, delegate: self.delegate, delegateQueue: nil)
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = timeoutSec
+        session = URLSession.init(configuration: configuration, delegate: self.delegate, delegateQueue: nil)
     }
+    
 }
 
 extension ImageDissector {
     open func dissectImage(with url: URL, completion: @escaping (Result) -> Void) {
+        guard url.absoluteString.characters.count > 0 else {
+            completion(.failure(ImageDissectorError.invalidUrl))
+            return
+        }
+        
         let task = session.dataTask(with: url)
         let operation = DissectOperation(task: task)
         operation.completionBlock = { [weak self] in
-            let result = operation.result ?? .failure(NSError.init(domain: "", code: 0, userInfo: nil))
+            let result = operation.result ?? .failure(ImageDissectorError.cannotGetResult)
             completion(result)
             self?.delegate.manager.removeOperation(at: url)
         }
@@ -55,11 +46,9 @@ extension ImageDissector {
         var results = [URL: Result]()
         
         let uniqueUrls = NSOrderedSet.init(array: urls).array as! [URL]
-        
-        (0..<uniqueUrls.count).forEach{ _ in group.enter() }
-        
         for url in uniqueUrls {
-            DispatchQueue.main.async { [weak self] in
+            group.enter()
+            DispatchQueue.main.async(group: group) { [weak self] in
                 self?.dissectImage(with: url, completion: { (result) in
                     guard let _  = self else { return }
                     results[url] = result

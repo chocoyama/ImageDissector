@@ -69,24 +69,48 @@ class PerformanceTests: XCTestCase {
             }
             
         })
-        waitForExpectations(timeout: 2.0, handler: nil)
+        waitForExpectations(timeout: 0.5, handler: nil)
+    }
+    
+    func testHeavyDataPerformance() {
+        let url = TestData.heavyGif.url
+        let start = Date()
+        
+        let expectation = self.expectation(description: "dissect")
+        dissector?.dissectImage(with: url, completion: { (result) in
+            defer {
+                let span = start.timeIntervalSince(Date())
+                print("経過時間(DISSECT) = \(span)")
+                expectation.fulfill()
+            }
+            
+            switch result {
+            case .success(let size, let type):
+                XCTAssertEqual(size, TestData.heavyGif.size)
+                XCTAssertEqual(type, Type.gif)
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+            
+        })
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
 
     func testDissectorBigDataPerformance() {
         let urls = TestData.manyUrls
-        let start = Date()
         
+        let start = Date()
         let expectation = self.expectation(description: "concurrent")
+        
         dissector?.dissectImage(with: urls, completion: { (results) in
             defer {
                 let span = start.timeIntervalSince(Date())
                 print("経過時間(DISSECT BIGDATA) = \(span)")
                 expectation.fulfill()
             }
-            results.forEach {
-                XCTAssertNotNil($0.value.getSize(), "\($0.key) のサイズを取得できませんでした")
-            }
+            results.filter{ $0.value.getSize() == nil }.forEach{ print("Failure: \($0.key.absoluteString)") }
         })
-        waitForExpectations(timeout: 5.0, handler: nil)
+        
+        waitForExpectations(timeout: 2.0, handler: nil)
     }
 }
