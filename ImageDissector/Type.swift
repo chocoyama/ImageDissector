@@ -10,6 +10,7 @@ import Foundation
 
 public enum Type {
     case gif
+    case animationGif
     case png
     case jpeg
     case unsupported
@@ -23,14 +24,20 @@ public enum Type {
         switch CFSwapInt16(length) {
         case 0xFFD8: return .jpeg
         case 0x8950: return .png
-        case 0x4749: return .gif
+        case 0x4749:
+            let result = GifParser.parse(data: data)
+            switch result {
+            case .gif: return .gif
+            case .animationGif: return .animationGif
+            case .something: return .unsupported
+            }
         default: return .unsupported
         }
     }
     
     func extractSize(from data: Data) -> CGSize {
         switch self {
-        case .gif:
+        case .gif, .animationGif:
             guard data.count >= 11 else { return CGSize.zero }
             
             var size = Size<UInt16>()
