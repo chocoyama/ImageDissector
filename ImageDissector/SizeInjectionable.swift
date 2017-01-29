@@ -10,5 +10,7 @@ import UIKit
 
 public protocol SizeInjectionable: class {
     var imageUrl: URL? { get set }
+    
     var imageSize: CGSize? { get set }
+    var imageType: Type? { get set }
 }

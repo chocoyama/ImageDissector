@@ -70,8 +70,11 @@ extension ImageDissector {
         
         dissectImage(with: imageUrl) { (result) in
             switch result {
-            case .success(let size, _): target.imageSize = size
-            case .failure(_): break
+            case .success(let size, let type):
+                target.imageSize = size
+                target.imageType = type
+            case .failure(_):
+                break
             }
             completion(target)
         }
@@ -82,10 +85,10 @@ extension ImageDissector {
         dissectImage(with: urls) { (results) in
             for (url, result) in results {
                 switch result {
-                case .success(let size, _):
+                case .success(let size, let type):
                     targets
                         .filter{ $0.imageUrl == url }
-                        .forEach{ $0.imageSize = size }
+                        .forEach{ $0.imageSize = size; $0.imageType = type }
                     
                 case .failure(_):
                     break
