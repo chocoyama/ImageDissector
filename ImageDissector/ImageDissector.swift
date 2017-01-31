@@ -26,14 +26,14 @@ open class ImageDissector {
 extension ImageDissector {
     open func dissectImage(with url: URL, completion: @escaping (Result) -> Void) {
         guard url.absoluteString.characters.count > 0 else {
-            completion(.failure(ImageDissectorError.invalidUrl))
+            completion(.failure(ImageDissectorError.invalidUrl, nil))
             return
         }
         
         let task = session.dataTask(with: url)
         let operation = DissectOperation(task: task)
         operation.completionBlock = { [weak self] in
-            let result = operation.result ?? .failure(ImageDissectorError.cannotGetResult)
+            let result = operation.result ?? .failure(ImageDissectorError.cannotGetResult, operation.detectType)
             completion(result)
             self?.delegate.manager.removeOperation(at: url)
         }
@@ -73,8 +73,9 @@ extension ImageDissector {
             case .success(let size, let type):
                 target.imageSize = size
                 target.imageType = type
-            case .failure(_):
-                break
+            case .failure(_, let type):
+                target.imageSize = nil
+                target.imageType = type
             }
             completion(target)
         }
@@ -90,8 +91,10 @@ extension ImageDissector {
                         .filter{ $0.imageUrl == url }
                         .forEach{ $0.imageSize = size; $0.imageType = type }
                     
-                case .failure(_):
-                    break
+                case .failure(_, let type):
+                    targets
+                        .filter{ $0.imageUrl == url }
+                        .forEach{ $0.imageSize = nil; $0.imageType = type }
                 }
             }
             completion(targets)

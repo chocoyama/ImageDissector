@@ -64,7 +64,8 @@ class PerformanceTests: XCTestCase {
             case .success(let size, let type):
                 XCTAssertEqual(size, TestData.gif.size)
                 XCTAssertEqual(type, Type.gif)
-            case .failure(let error):
+            case .failure(let error, let type):
+                XCTAssertEqual(type, Type.gif)
                 XCTFail(error.localizedDescription)
             }
             
@@ -88,7 +89,8 @@ class PerformanceTests: XCTestCase {
             case .success(let size, let type):
                 XCTAssertEqual(size, TestData.heavyGif.size)
                 XCTAssertEqual(type, Type.gif)
-            case .failure(let error):
+            case .failure(let error, let type):
+                XCTAssertEqual(type, Type.gif)
                 XCTFail(error.localizedDescription)
             }
             

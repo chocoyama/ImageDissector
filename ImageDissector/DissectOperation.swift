@@ -11,6 +11,7 @@ import Foundation
 class DissectOperation: Operation {
     
     var result: Result?
+    var detectType: Type?
     
     private var stackData = Data()
     private let dataTask: URLSessionDataTask
@@ -33,7 +34,7 @@ class DissectOperation: Operation {
     }
     
     func terminateWith(error: Error) {
-        complete(result: .failure(error))
+        complete(result: .failure(error, detectType))
     }
     
     func reset() {
@@ -43,12 +44,13 @@ class DissectOperation: Operation {
     private func parse() {
         let data = stackData
         let type = Type.detect(from: data)
+        self.detectType = type
         
         if type != .unsupported {
             let size = type.extractSize(from: data)
             complete(result: .success(size, type))
         } else if data.count > 2 {
-            complete(result: .failure(ImageDissectorError.brokenData))
+            complete(result: .failure(ImageDissectorError.brokenData, type))
         }
     }
     

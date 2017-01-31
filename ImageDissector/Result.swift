@@ -10,19 +10,19 @@ import Foundation
 
 public enum Result {
     case success(CGSize, Type)
-    case failure(Error)
+    case failure(Error, Type?)
     
     func getSize() -> CGSize? {
         switch self {
         case .success(let size, _): return size
-        case .failure(_): return nil
+        case .failure(_, _): return nil
         }
     }
     
     func getType() -> Type? {
         switch self {
         case .success(_, let type): return type
-        case .failure(_): return nil
+        case .failure(_, let type): return type
         }
     }
 }

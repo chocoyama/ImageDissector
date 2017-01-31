@@ -33,7 +33,8 @@ class ImageDissectorTests: XCTestCase {
             case .success(let size, let type):
                 XCTAssertEqual(size, TestData.gif.size)
                 XCTAssertEqual(type, Type.gif)
-            case .failure(let error):
+            case .failure(let error, let type):
+                XCTAssertEqual(type, Type.gif)
                 XCTFail(error.localizedDescription)
             }
         })
@@ -51,7 +52,8 @@ class ImageDissectorTests: XCTestCase {
             case .success(let size, let type):
                 XCTAssertEqual(size, TestData.png.size)
                 XCTAssertEqual(type, Type.png)
-            case .failure(let error):
+            case .failure(let error, let type):
+                XCTAssertEqual(type, Type.png)
                 XCTFail(error.localizedDescription)
             }
         })
@@ -69,7 +71,8 @@ class ImageDissectorTests: XCTestCase {
             case .success(let size, let type):
                 XCTAssertEqual(size, TestData.jpeg.size)
                 XCTAssertEqual(type, Type.jpeg)
-            case .failure(let error):
+            case .failure(let error, let type):
+                XCTAssertEqual(type, Type.jpeg)
                 XCTFail(error.localizedDescription)
             }
         })
@@ -95,7 +98,8 @@ class ImageDissectorTests: XCTestCase {
             case .success(let size, let type):
                 XCTAssertEqual(size, TestData.gif.size)
                 XCTAssertEqual(type, Type.gif)
-            case .failure(let error):
+            case .failure(let error, let type):
+                XCTAssertEqual(type, Type.gif)
                 XCTFail(error.localizedDescription)
             }
             
@@ -103,7 +107,8 @@ class ImageDissectorTests: XCTestCase {
             case .success(let size, let type):
                 XCTAssertEqual(size, TestData.png.size)
                 XCTAssertEqual(type, Type.png)
-            case .failure(let error):
+            case .failure(let error, let type):
+                XCTAssertEqual(type, Type.png)
                 XCTFail(error.localizedDescription)
             }
             
@@ -111,7 +116,8 @@ class ImageDissectorTests: XCTestCase {
             case .success(let size, let type):
                 XCTAssertEqual(size, TestData.jpeg.size)
                 XCTAssertEqual(type, Type.jpeg)
-            case .failure(let error):
+            case .failure(let error, let type):
+                XCTAssertEqual(type, Type.png)
                 XCTFail(error.localizedDescription)
             }
         })

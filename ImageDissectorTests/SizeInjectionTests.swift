@@ -65,6 +65,7 @@ class SizeInjectionTests: XCTestCase {
 class TestImageEntity: SizeInjectionable {
     var imageUrl: URL?
     var imageSize: CGSize?
+    var imageType: Type?
     
     static var gifEntity: TestImageEntity {
         let entity = TestImageEntity()
