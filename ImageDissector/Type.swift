@@ -15,7 +15,7 @@ public enum Type {
     case jpeg
     case unsupported
     
-    static func detect(from data: Data) -> Type {
+    public static func detect(from data: Data) -> Type {
         guard data.count >= 2 else { return .unsupported }
         
         var length = UInt16(0)
